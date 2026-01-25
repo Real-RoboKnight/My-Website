@@ -3,5 +3,5 @@ services:
     build: ./nginx
     restart: unless-stopped
     ports: 
-      - "3000:80"
+      - "${PORT}:80"
     container_name: nginx
