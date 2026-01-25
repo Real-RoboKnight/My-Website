@@ -6,6 +6,13 @@ When I create .env files, I will try to remember to commit a template
 version of the env file, that states the names of required secrets, 
 to allow you to easily add them.
 
+.env files:
+ - ./.env
+   - `PORT=xxxx` This is the port on the host computer that my website will be on.
+  
+Also, you will want to go to ./nginx/nginx.conf:45 and change the host name for the website.
+`localhost` is provided already if you are not planning to publish this site to the wider internet.
+
 
 To run it, install docker, and run the docker compose file. 
 

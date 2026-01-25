@@ -1,0 +1,7 @@
+services:
+  nginx:
+    build: ./nginx
+    restart: unless-stopped
+    ports: 
+      - "${PORT}:80"
+    container_name: nginx
