@@ -5,3 +5,7 @@ services:
     ports:
       - "${PORT}:80"
     container_name: nginx
+  static_files:
+    build: ./static_files
+    restart: unless-stopped
+    container_name: staticFiles
