@@ -1,8 +1,6 @@
 FROM nginx:alpine
 
-RUN mkdir -p /app/log
-
-COPY 50-test-config.sh docker-entrypoint.d
+COPY ["[0-9]*.sh", "docker-entrypoint.d/"]
 
 RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/nginx.conf

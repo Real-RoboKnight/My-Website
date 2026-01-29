@@ -5,7 +5,16 @@ services:
     ports:
       - "${PORT}:80"
     container_name: nginx
+    volumes:
+      - logs:/logs:rw
+    depends_on:
+      - static_files
   static_files:
     build: ./static_files
     restart: unless-stopped
     container_name: staticFiles
+    volumes:
+      - logs:/logs:rw
+
+volumes:
+  logs:
