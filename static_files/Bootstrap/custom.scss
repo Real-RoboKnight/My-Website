@@ -1,0 +1,16 @@
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+// $primary: darken(#00ffff, 20);
+// $secondary: darken(#F5A9B8, 20);
+// $danger: $indigo;
+// $link-color: $blue;
+
+// If you have a variables file, import it here:
+// @import 'variables(4)';
+
+$primary: darken(#00ffff, 20%);
+$secondary: darken(#F5A9B8, 20%);
+$danger: $indigo;
+$link-color: $blue;
+
+@import 'bootstrap/scss/bootstrap';
