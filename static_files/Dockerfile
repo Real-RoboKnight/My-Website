@@ -20,6 +20,9 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 COPY Files /app
 COPY --from=bootstrap app/custom.css /app
+COPY --from=bootstrap app/custom.css.map /app
+COPY --from=bootstrap app/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js /app
+COPY --from=bootstrap app/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js.map /app
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]

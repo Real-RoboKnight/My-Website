@@ -15,6 +15,15 @@ services:
     container_name: staticFiles
     volumes:
       - logs:/logs:rw
+      - ./static_files/dev_volume:/app/dev_volume:ro
+    home_page:
+      build: ./home_page
+      restart: unless-stopped
+      container_name: home_page
+      volumes:
+        - logs:/logs:rw
+      depends_on:
+        - static_files
 
 volumes:
   logs:
