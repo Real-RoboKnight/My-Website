@@ -9,21 +9,58 @@ services:
       - logs:/logs:rw
     depends_on:
       - static_files
+      - home_page
+    develop:
+      watch:
+        - action: sync+restart
+          path: ./nginx/nginx.conf
+          target: /etc/nginx/nginx.conf
   static_files:
     build: ./static_files
     restart: unless-stopped
     container_name: staticFiles
     volumes:
       - logs:/logs:rw
-      - ./static_files/dev_volume:/app/dev_volume:ro
-    home_page:
-      build: ./home_page
-      restart: unless-stopped
-      container_name: home_page
-      volumes:
-        - logs:/logs:rw
-      depends_on:
-        - static_files
+      - home_page_static:/app/home_page/:ro
+    develop:
+      watch:
+        - action: sync
+          path: ./static_files/Files
+          target: /app
+        - action: sync+restart
+          path: ./static_files/nginx.conf
+          target: /etc/nginx/nginx.conf
+        - action: rebuild
+          path: ./static_files/Bootstrap
+  home_page:
+    build: ./home_page
+    restart: unless-stopped
+    container_name: home_page
+    volumes:
+      - logs:/logs:rw
+      - home_page_static:/static/:rw
+    depends_on:
+      - static_files
+      - database
+    develop:
+      watch:
+        - action: rebuild
+          path: ./home_page/django
+  database:
+    image: postgres:18-alpine
+    restart: always
+    container_name: db
+    environment:
+      POSTGRES_PASSWORD: database
+    volumes:
+      - postgres_database:/var/lib/postgresql:rw
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 3005:8080
 
 volumes:
   logs:
+  home_page_static:
+  postgres_database:
