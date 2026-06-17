@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Theme Tester (Kitchen Sink)</title>
+  <link href="/static/custom.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">ThemeTester</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Dropdown</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search">
+          <button class="btn btn-outline-light" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <h2 class="mb-3 display-2">Theme Colors</h2>
+    <div class="row g-2 mb-5">
+      <div class="col-6 col-md-3">
+        <div class="color-box bg-primary text-white p-2 rounded-pill">Primary</div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="color-box bg-secondary text-white p-2 rounded-pill">Secondary</div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="color-box bg-success text-white p-2 rounded-pill">Success</div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="color-box bg-danger text-white p-2 rounded-pill">Danger</div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="color-box bg-warning text-dark p-2 rounded-pill">Warning</div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="color-box bg-info text-dark p-2 rounded-pill">Info</div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="color-box bg-light text-dark border p-2 rounded-pill">Light</div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="color-box bg-dark text-white p-2 rounded-pill">Dark</div>
+      </div>
+    </div>
+
+    <hr class="my-5">
+
+    <div class="row mb-5">
+      <div class="col-md-6">
+        <h2>Typography</h2>
+        <h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <h4>Heading 4</h4>
+        <p class="lead">This is a lead paragraph to test your primary text presentation.</p>
+        <p>Standard paragraph text with a <a href="https://www.google.com">sample inline link</a> to see your link color
+          accent.</p>
+      </div>
+      <div class="col-md-6">
+        <h2>Blockquote & Muted</h2>
+        <figure>
+          <blockquote class="blockquote">
+            <p>A well-known quote, contained in a blockquote element.</p>
+          </blockquote>
+          <figcaption class="blockquote-footer">
+            Someone famous in <cite title="Source Title">Source Title</cite>
+          </figcaption>
+        </figure>
+        <p class="text-muted">This text is explicitly muted.</p>
+      </div>
+    </div>
+
+    <hr class="my-5">
+
+    <h2 class="mb-3">Buttons</h2>
+    <div class="mb-4">
+      <button type="button" class="btn btn-primary">Primary</button>
+      <button type="button" class="btn btn-secondary">Secondary</button>
+      <button type="button" class="btn btn-success">Success</button>
+      <button type="button" class="btn btn-danger">Danger</button>
+      <button type="button" class="btn btn-warning">Warning</button>
+      <button type="button" class="btn btn-info">Info</button>
+      <button type="button" class="btn btn-light">Light</button>
+      <button type="button" class="btn btn-dark">Dark</button>
+      <button type="button" class="btn btn-link">Link</button>
+    </div>
+    <div class="mb-5">
+      <button type="button" class="btn btn-outline-primary">Outline Primary</button>
+      <button type="button" class="btn btn-outline-secondary">Outline Secondary</button>
+      <button type="button" class="btn btn-outline-success">Outline Success</button>
+      <button type="button" class="btn btn-outline-danger">Outline Danger</button>
+    </div>
+
+    <hr class="my-5">
+
+    <div class="row mb-5">
+      <div class="col-md-6">
+        <h2>Alerts</h2>
+        <div class="alert alert-primary" role="alert">Primary alert style!</div>
+        <div class="alert alert-secondary" role="alert">Secondary alert style.</div>
+        <div class="alert alert-success" role="alert">Success alert—everything looks good!</div>
+        <div class="alert alert-danger" role="alert">Danger alert—something went wrong.</div>
+      </div>
+      <div class="col-md-6">
+        <h2>Badges & Spinners</h2>
+        <div class="mb-3">
+          <span class="badge bg-primary">Primary</span>
+          <span class="badge bg-secondary">Secondary</span>
+          <span class="badge bg-success">Success</span>
+          <span class="badge bg-danger">Danger</span>
+          <span class="badge rounded-pill bg-warning text-dark">Pill</span>
+        </div>
+        <h3>Spinners</h3>
+        <div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>
+        <div class="spinner-border text-secondary" role="status"><span class="visually-hidden">Loading...</span></div>
+        <div class="spinner-grow text-success" role="status"><span class="visually-hidden">Loading...</span></div>
+        <div class="spinner-grow text-danger" role="status"><span class="visually-hidden">Loading...</span></div>
+      </div>
+    </div>
+
+    <hr class="my-5">
+
+    <h2 class="mb-3">Forms</h2>
+    <div class="row mb-5">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label class="form-label">Email address</label>
+          <input type="email" class="form-control" placeholder="name@example.com">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Example select</label>
+          <select class="form-select">
+            <option>Option one</option>
+            <option>Option two</option>
+            <option>Option three</option>
+          </select>
+        </div>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="checkbox" id="check1" checked>
+          <label class="form-check-label" for="check1">Checked checkbox</label>
+        </div>
+        <div class="form-check form-switch mb-3">
+          <input class="form-check-input" type="checkbox" id="switch1" checked>
+          <label class="form-check-label" for="switch1">Toggle switch element</label>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-floating mb-3">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+          <label for="floatingPassword">Floating Label Password Input</label>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Range input</label>
+          <input type="range" class="form-range" min="0" max="5">
+        </div>
+      </div>
+    </div>
+
+    <hr class="my-5">
+
+    <div class="row mb-5">
+      <div class="col-md-4">
+        <h2>Cards</h2>
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Card Title</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="btn btn-sm btn-primary ms-2">Button</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <h2>Progress Bars & List Groups</h2>
+        <div class="mb-4">
+          <div class="progress mb-2" style="height: 20px;">
+            <div class="progress-bar bg-primary" role="progressbar" style="width: 25%">25%</div>
+          </div>
+          <div class="progress" style="height: 20px;">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar"
+              style="width: 75%">75%</div>
+          </div>
+        </div>
+
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center active">
+            An active list group item
+            <span class="badge bg-primary rounded-pill">14</span>
+          </li>
+          <li class="list-group-item">A second list item</li>
+          <li class="list-group-item disabled">A disabled list item</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="my-5">
+
+    <h2 class="mb-3">Tables & Pagination</h2>
+    <table class="table table-striped table-hover border mb-4">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Handle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr class="table-primary">
+          <th scope="row">2</th>
+          <td>Jacob (Contextual)</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Larry the Bird</td>
+          <td>Twitter</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <nav>
+      <ul class="pagination">
+        <li class="page-item disabled"><a class="page-link">Previous</a></li>
+        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
+    </nav>
+
+  </div>
+
+  <script src="/static/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

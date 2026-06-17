@@ -1,16 +1,53 @@
-@import 'bootstrap/scss/functions';
-@import 'bootstrap/scss/variables';
+
+
 // $primary: darken(#00ffff, 20);
-// $secondary: darken(#F5A9B8, 20);
 // $danger: $indigo;
 // $link-color: $blue;
 
 // If you have a variables file, import it here:
 // @import 'variables(4)';
 
-$primary: darken(#00ffff, 20%);
-$secondary: darken(#F5A9B8, 20%);
-$danger: $indigo;
-$link-color: $blue;
+// $primary: darken(#00ffff, 80%);
+// $secondary: darken(#F5A9B8, 20%);
+// $danger: $indigo;
+// $link-color: $blue;
+// $body-color: $gray-100;
+
+@import 'font.scss';
+
+$primary: #005244;
+$secondary: #6F043B;
+$body-bg-dark: #03001F;
+
+@import 'bootstrap/scss/functions';
+
+
+@import 'bootstrap/scss/variables';
+
+// Alerts in Bootstrap 5.3 use *-bg-subtle variables for background color.
+// Increase tint so contextual alerts look lighter.
+$link-color-dark: mix(#0000ff, $body-color-dark, 50%);
+$primary-bg-subtle-dark: shade-color($primary, 70%);
+$secondary-bg-subtle-dark: shade-color($secondary, 75%);
+$success-bg-subtle-dark: shade-color($success, 75%);
+$primary-text-emphasis-dark:        tint-color($primary, 80%);
+$secondary-text-emphasis-dark:      tint-color($secondary, 80%);
+$success-text-emphasis-dark:        tint-color($success, 60%);
+
+
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $gray-200,
+  "dark":       $gray-800
+);
+
 
 @import 'bootstrap/scss/bootstrap';
+
+
