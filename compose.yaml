@@ -39,6 +39,10 @@ services:
     volumes:
       - logs:/logs:rw
       - home_page_static:/static/:rw
+    environment:
+      SECRET_KEY: ${SECRET_KEY}
+      EMAIL_HOST_PASSWORD: ${EMAIL_HOST_PASSWORD}
+      EMAIL_HOST_USER: ${EMAIL_HOST_USER}
     depends_on:
       - static_files
       - database

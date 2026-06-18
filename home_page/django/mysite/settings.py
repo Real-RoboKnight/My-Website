@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+from os import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,21 +21,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-yb0wqimb$_qyhwtg)k*hrh3h-ou+-4c-ue4qx77^oorm!sj5h+'
+SECRET_KEY = environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['.dylan-shah.com', 'localhost', '127.0.0.1']
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://dev.dylan-shah.com', 'https://www.dylan-shah.com']
+CSRF_COOKIE_DOMAIN = ".dylan-shah.com"
 
-
+# Session cookies will expire when the user closes their browser.
+CSRF_COOKIE_AGE = None
+CSRF_USE_SESSIONS = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # Application definition
 
 INSTALLED_APPS = [
-    'polls.apps.PollsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -72,7 +74,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
-
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
@@ -105,7 +107,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+USE_X_FORWARDED_HOST = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
@@ -118,7 +122,37 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+# Error logging to email settings
+DEFAULT_FROM_EMAIL = "Django Error <error.homepage.django@dylan-shah.com>"
+SERVER_EMAIL = DEFAULT_FROM_EMAIL
+EMAIL_HOST = "mail.smtp2go.com"
+EMAIL_HOST_PASSWORD = environ["EMAIL_HOST_PASSWORD"]
+EMAIL_HOST_USER = environ["EMAIL_HOST_USER"]
+EMAIL_PORT = 25
+EMAIL_SUBJECT_PREFIX = "[Django Homepage Error] "
+EMAIL_USE_LOCALTIME = True
+EMAIL_USE_TLS = True
+ADMINS = [
+    ("Dylan Shah", "error.homepage.django@dylan-shah.com"),
+]
+MANAGERS = ADMINS
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "mail_admins": {
+            "level": "ERROR",
+            "class": "django.utils.log.AdminEmailHandler",
+        },
+    },
+    "loggers": {
+        "django.request": {
+            "handlers": ["mail_admins"],
+            "level": "ERROR",
+            "propagate": True,
+        },
+    },
+}
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 

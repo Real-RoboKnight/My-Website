@@ -9,8 +9,10 @@ to allow you to easily add them.
 .env files:
 
 - ./.env
-  - `PORT=xxxx` This is the port on the host computer that my website will be on.
-  
+  - `PORT:3000` This is the port on the host computer that my website will be on.
+  - `SECRET_KEY` This should be a long and secure key that the server will use. When rotated, will sign out of all sessions, etc.
+  - `EMAIL_HOST_PASSWORD` The password for the email service
+
 Also, you will want to go to ./nginx/nginx.conf:45 and change the host name for the website.
 Same with allowed hosts at `home_page/django/mysite/settings.py`
 `localhost` is provided already if you are not planning to publish this site to the wider internet.
