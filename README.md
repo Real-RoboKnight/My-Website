@@ -14,7 +14,7 @@ to allow you to easily add them.
   - `EMAIL_HOST_PASSWORD` The password for the email service
 
 Also, you will want to go to ./nginx/nginx.conf:45 and change the host name for the website.
-Same with allowed hosts at `home_page/django/mysite/settings.py`
+Same with allowed hosts at `home_page/django/main/settings.py`
 `localhost` is provided already if you are not planning to publish this site to the wider internet.
 
 To run it, install docker, and run the docker compose file.

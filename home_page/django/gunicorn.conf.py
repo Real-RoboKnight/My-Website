@@ -5,4 +5,4 @@ threads = 1
 timeout = 0
 accesslog = '/logs/gunicorn/access.log'
 errorlog = '/logs/gunicorn/error.log'
-wsgi_app = 'mysite.wsgi:application'
+wsgi_app = 'main.wsgi:application'
