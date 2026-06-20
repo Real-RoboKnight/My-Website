@@ -1,0 +1,115 @@
+{# Copyright - All Rights Reserved #}
+
+{% extends "framework/main.html" %}
+
+{% block title %}Contact Me({% endblock %}
+
+{% block description %}
+A web form to be able to contact Dylan Shah via email
+{% endblock %}
+
+{% block head %}
+{{ block.super }}
+{% endblock %}
+
+
+{% block body %}
+
+<h1>Contact Me</h1>
+<p>Feel free to contact me for any reason! For employment offers, for advice, to yap, etc.</p>
+<form method="post" action="{% url 'contact-me' %}" class="col-lg-8 col-12 mx-auto py-4">
+    {% csrf_token %}
+    <div class="row row-cols-md-2 row-cols-1  ">
+        <div class="form-floating col mb-3">
+            <input type="text" id="name" placeholder="Name" name="name"
+                class="form-control {% if form.name.errors %}is-invalid{% endif %}"
+                value="{{ form.name.value|default:'' }}" required>
+            <label for="name">Name</label>
+            {% if form.name.errors %}
+            <div class="invalid-feedback d-block">
+                {{ form.name.errors.0 }}
+            </div>
+            {% endif %}
+        </div>
+        <div class="form-floating col mb-3">
+            <input id="response_email" name="response_email" type="email" placeholder="Email"
+                class="form-control {% if form.response_email.errors %}is-invalid{% endif %}"
+                value="{{ form.response_email.value|default:'' }}" required>
+            <label for="response_email">Response Email</label>
+            {% if form.response_email.errors %}
+            <div class="invalid-feedback d-block">
+                {{ form.response_email.errors.0 }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-12 mb-3 form-floating">
+            <input type="text" id="subject" placeholder="Subject" name="subject"
+                class="form-control {% if form.subject.errors %}is-invalid{% endif %}"
+                value="{{ form.subject.value|default:'' }}" required>
+            <label for="subject">Subject</label>
+            {% if form.subject.errors %}
+            <div class="invalid-feedback d-block">
+                {{ form.subject.errors.0 }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="form-group row mb-3">
+        <div class="col-12 d-flex flex-column rounded" style="height: 50vh;">
+            <div id="editor" name="content" class="form-rich-text ">
+                <p>Dear Dylan,</p>
+                <br>
+                <p class="ql-indent-1">Hello!</p>
+                <br>
+                <p>Thanks, [Name]</p>
+            </div>
+        </div>
+        {% if form.content.errors %}
+        <div class="alert alert-danger mt-2" role="alert">
+            {{ form.content.errors.0 }}
+        </div>
+        {% endif %}
+    </div>
+    <div class="row row-cols-md-2 row-cols-1">
+        <div class="col mb-3">
+            <div id="turnstile-container"></div>
+            {% if form.cf_turnstile_response.errors %}
+            <div class="alert alert-danger mt-2" role="alert">
+                {{ form.cf_turnstile_response.errors.0 }}
+            </div>
+            {% endif %}
+        </div>
+        <div class="col mb-3">
+            <button type="submit" class="btn btn-primary w-100 h-100 mb-3" disabled>Send</button>
+        </div>
+    </div>
+</form>
+<p>I only speak US-English fluently, so I would appreciate it if you kept to English. Thanks :)</p>
+
+<div id="result" class="collapse"></div>
+
+<script>
+    window.addEventListener('load', function () {
+        const html_form = document.getElementsByTagName("form").item(0);
+
+        window.make_div_editor_form(
+            document.getElementById("editor"),
+            html_form
+        );
+        window.turnstile_form(
+            document.getElementById("turnstile-container"),
+            html_form,
+            document.getElementById("result"),
+
+        )
+    });
+
+    document.getElementsByTagName("form").item(0).addEventListener('submit', function (event) {
+        // event.preventDefault();
+        // Ensure that posting the data happens after other listeners (transform data)
+    })
+
+</script>
+{% endblock %}

@@ -1,0 +1,26 @@
+{
+  "name": "homepage-typescript",
+  "version": "0.0.1",
+  "description": "All the typescript that I write for my homepage",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "esbuild index.ts --bundle --minify --sourcemap --outfile=/app/app.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Real-RoboKnight/My-Website"
+  },
+  "author": "Dylan Shah",
+  "license": "AGPL-3.0-or-later",
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "esbuild": "^0.28.1",
+    "katex": "^0.17.0",
+    "quill": "^2.0.2",
+    "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "@types/bootstrap": "^5.2.11"
+  }
+}

@@ -32,6 +32,8 @@ services:
           target: /etc/nginx/nginx.conf
         - action: rebuild
           path: ./static_files/Bootstrap
+        - action: rebuild
+          path: ./static_files/Typescript
   home_page:
     build: ./home_page
     restart: unless-stopped
@@ -43,6 +45,7 @@ services:
       SECRET_KEY: ${SECRET_KEY}
       EMAIL_HOST_PASSWORD: ${EMAIL_HOST_PASSWORD}
       EMAIL_HOST_USER: ${EMAIL_HOST_USER}
+      TURNSTILE_SECRET_KEY: ${TURNSTILE_SECRET_KEY}
     depends_on:
       - static_files
       - database

@@ -1,0 +1,41 @@
+{% load static %}
+{# Copyright - All Rights Reserved #}
+<!DOCTYPE html>
+
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <title>{% block title %}{% endblock %} - Dylan Shah</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/custom.css">
+    <link href="/favicon.ico" rel="icon">
+
+    <script async type="module" src="/static/app.min.js"></script>
+    <script src="/static/bootstrap.bundle.min.js"></script>
+
+
+    <link rel="preload" href="https://fonts.gstatic.com/s/audiowide/v22/l7gdbjpo0cum0ckerWCdmA_OIxo.woff2" as="font"
+        type="font/woff2" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/audiowide/v22/l7gdbjpo0cum0ckerWCdlg_O.woff2" as="font"
+        type="font/woff2" crossorigin>
+    <link rel="preload" href="/static/HermitFont/Hermit-Regular.woff2" as="font" type="font/woff2">
+
+    <!-- KaTeX for math rendering -->
+    <link rel="stylesheet" href="/static/katex/katex.min.css">
+    <script defer src="/static/katex/katex.min.js"></script>
+    <script defer src="/static/katex/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+    <meta name="description" content="{% block description %}{% endblock %}">
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+    {% include "./navbar.html" %}
+    <main id="content" class="container">
+        {% block body %}{% endblock %}
+    </main>
+    {% include "./footer.html" %}
+</body>
+
+</html>
