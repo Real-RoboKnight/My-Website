@@ -27,8 +27,10 @@ declare global {
  * Used to authenticate on a form that should not be bot spammed
  * @param id the turnstile elem: <div id="turnstile-container"></div>
  * @param form The form with which to include the user's human token
+ * @param error_div A div with .d-none that error messages can be placed inside of
+ * @param public_key The public key fro cloudflare turnstile
  */
-export function turnstile_form(id: HTMLDivElement, form: HTMLFormElement, error_div: HTMLDivElement) {
+export function turnstile_form(id: HTMLDivElement, form: HTMLFormElement, error_div: HTMLDivElement, public_key: string) {
     loadScriptFromUrl(
         "https://challenges.cloudflare.com/turnstile/v0/api.js",
         {
@@ -37,7 +39,7 @@ export function turnstile_form(id: HTMLDivElement, form: HTMLFormElement, error_
         }
     ).then(() => {
         const widgetId = window.turnstile.render(id, {
-            sitekey: "0x4AAAAAADn448-Kh06GWZ7e",
+            sitekey: public_key,
             theme: "dark",
             size: "flexible",
             'response-field-name': 'turnstile_token',
@@ -72,9 +74,6 @@ export function turnstile_form(id: HTMLDivElement, form: HTMLFormElement, error_
         Unfortunately, we ran into an error verifying that you are human :(  Error code: ` + error + `
     </div>
 `;
-                const bsCollapse = new bootstrap.Collapse(error_div, {
-                    toggle: false // Prevents it from automatically toggling upon initialization
-                });
                 const submitElements = form.querySelectorAll<HTMLButtonElement | HTMLInputElement>(
                     'button[type="submit"], input[type="submit"]'
                 );
@@ -83,7 +82,7 @@ export function turnstile_form(id: HTMLDivElement, form: HTMLFormElement, error_
                     element.disabled = true;
                     element.setAttribute("aria-disabled", "true");
                 });
-                bsCollapse.show();
+                error_div.classList.remove('d-none');
             }
         });
     });

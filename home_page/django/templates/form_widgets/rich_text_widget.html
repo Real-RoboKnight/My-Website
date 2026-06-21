@@ -1,0 +1,21 @@
+<div id="{{ widget.attrs.id }}" data-field-name="{{ widget.name }}" class="form-rich-text" name="{{ widget.name }}">{{ widget.value|safe }}</div>
+
+<script>
+    window.addEventListener('load', function () {
+        console.log("Initializing Quill Rich Text Editor")
+        const container = document.getElementById("{{ widget.attrs.id }}");
+        if (!container) {
+            return;
+        }
+
+        const html_form = container.closest("form");
+        if (!html_form) {
+            return;
+        }
+
+        window.rich_text_form(
+            container,
+            html_form
+        );
+    });
+</script>

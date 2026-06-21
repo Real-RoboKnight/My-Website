@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.forms',
     'personal_site',
 ]
 
@@ -72,6 +73,8 @@ TEMPLATES = [
         },
     },
 ]
+
+FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
 
 WSGI_APPLICATION = 'main.wsgi.application'
 
@@ -111,7 +114,6 @@ AUTH_PASSWORD_VALIDATORS = [
 USE_X_FORWARDED_HOST = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
-
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
@@ -163,3 +165,6 @@ LOGGING = {
 
 STATIC_URL = '/static/home_page/'
 STATIC_ROOT = "/static/"
+
+TURNSTILE_PUBLIC_KEY = environ["TURNSTILE_PUBLIC_KEY"]
+TURNSTILE_SECRET_KEY = environ["TURNSTILE_SECRET_KEY"]

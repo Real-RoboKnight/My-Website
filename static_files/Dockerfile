@@ -28,8 +28,8 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 COPY --from=bootstrap /app/custom.css /app
 COPY --from=bootstrap /app/custom.css.map /app
-COPY --from=bootstrap /app/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js /app
-COPY --from=bootstrap /app/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js.map /app
+# COPY --from=bootstrap /app/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js /app
+# COPY --from=bootstrap /app/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js.map /app
 
 COPY --from=typescript-compiler /app/node_modules/katex/dist/ /app/katex
 

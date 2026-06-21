@@ -22,13 +22,18 @@ class ContactMe(View):
     def get(self, request: HttpRequest) -> HttpResponse:
         print("Form gotten valid.")
 
-        return render(request, 'Contact.html', {'form': Contact_Me})
+        return render(request, 'Contact.html', {'form': Contact_Me()})
 
     def post(self, request: HttpRequest) -> HttpResponse:
         print("Processing the form...")
         form = Contact_Me(request.POST)
-        if form.is_valid():
-            # Process the form data here (e.g., send an email)
-            return HttpResponse('Valid Data')
+        if not form.is_valid():
+            return render(request, 'Contact.html', {'form': form}, status=400)
 
-        return render(request, 'Contact.html', {'form': Contact_Me(request.POST)})
+        # Process the form data here (e.g., send an email)
+        return HttpResponse('Valid Data')
+
+
+def test(request: HttpRequest) -> HttpResponse:
+
+    return HttpResponse('Valid Data')

@@ -5,17 +5,13 @@ import Quill from "quill";
  * @param id the <div name="stuff"></div> 
  * @param form the form that the data will be sent in
  */
-export function make_div_editor_form(id: HTMLDivElement, form: HTMLFormElement) {
+export function rich_text_form(id: HTMLDivElement, form: HTMLFormElement): Quill {
     const toolbarOptions = [
-        ['bold', 'italic', 'underline'],
-        ['blockquote', 'code-block'],
-        [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'list': 'check' }],
+        ['clean', 'bold', 'italic', 'underline', 'blockquote', 'code-block', { 'color': [] }, { 'background': [] }, { 'align': [] },],
         ['link', 'formula', { 'script': 'sub' }, { 'script': 'super' }],
-        [{ 'indent': '-1' }, { 'indent': '+1' }],
+        [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
 
-        [{ 'header': [1, 2, 3, false] }, { 'size': ['small', false, 'large', 'huge'] }, { 'font': [] }, { 'color': [] }, { 'background': [] }],
-
-        [{ 'align': [] }, 'clean'],
+        [{ 'header': [1, 2, 3, false] }, { 'size': ['small', false, 'large', 'huge'] }],
 
     ];
 
@@ -25,6 +21,11 @@ export function make_div_editor_form(id: HTMLDivElement, form: HTMLFormElement) 
         },
         theme: "snow"
     });
+
+    document.querySelectorAll(".ql-toolbar").forEach(function (toolbar) {
+        toolbar.querySelectorAll("*").
+            forEach(function (item) { item.setAttribute("tabindex", "-1"); });
+    })
 
     const name: string | null = id.getAttribute("name");
 
@@ -36,4 +37,5 @@ export function make_div_editor_form(id: HTMLDivElement, form: HTMLFormElement) 
             quill.getSemanticHTML()
         )
     })
+    return quill
 }

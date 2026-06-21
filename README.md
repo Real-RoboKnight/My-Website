@@ -12,7 +12,8 @@ to allow you to easily add them.
   - `PORT:3000` This is the port on the host computer that my website will be on.
   - `SECRET_KEY` This should be a long and secure key that the server will use. When rotated, will sign out of all sessions, etc.
   - `EMAIL_HOST_PASSWORD` The password for the email service
-  - `TURNSTILE_SECRET_KEY` A key for [cloudflare turnstile](www.cloudflare.com/products/turnstile/). Public key is in [./static_files/Typescript/turnstile_form.ts#L39](./static_files/Typescript/turnstile_form.ts#L39)
+  - `TURNSTILE_SECRET_KEY` A secret key for [cloudflare turnstile](www.cloudflare.com/products/turnstile/)
+  - `TURNSTILE_PUBLIC_KEY` A public key for [cloudflare turnstile](www.cloudflare.com/products/turnstile/)
 
 Also, you will want to go to ./nginx/nginx.conf:45 and change the host name for the website.
 Same with allowed hosts at `home_page/django/main/settings.py`
