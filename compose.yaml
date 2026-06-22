@@ -43,8 +43,9 @@ services:
       - home_page_static:/static/:rw
     environment:
       SECRET_KEY: ${SECRET_KEY}
-      EMAIL_HOST_PASSWORD: ${EMAIL_HOST_PASSWORD}
+      EMAIL_HOST: ${EMAIL_HOST}
       EMAIL_HOST_USER: ${EMAIL_HOST_USER}
+      EMAIL_HOST_PASSWORD: ${EMAIL_HOST_PASSWORD}
       TURNSTILE_SECRET_KEY: ${TURNSTILE_SECRET_KEY}
       TURNSTILE_PUBLIC_KEY: ${TURNSTILE_PUBLIC_KEY}
     depends_on:

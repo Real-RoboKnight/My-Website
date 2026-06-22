@@ -11,7 +11,9 @@ to allow you to easily add them.
 - ./.env
   - `PORT:3000` This is the port on the host computer that my website will be on.
   - `SECRET_KEY` This should be a long and secure key that the server will use. When rotated, will sign out of all sessions, etc.
-  - `EMAIL_HOST_PASSWORD` The password for the email service
+  - `EMAIL_HOST` URL of the SMTP email server
+  - `EMAIL_HOST_USER` Username for email server
+  - `EMAIL_HOST_PASSWORD` The password for the email server
   - `TURNSTILE_SECRET_KEY` A secret key for [cloudflare turnstile](www.cloudflare.com/products/turnstile/)
   - `TURNSTILE_PUBLIC_KEY` A public key for [cloudflare turnstile](www.cloudflare.com/products/turnstile/)
 

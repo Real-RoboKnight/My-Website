@@ -126,13 +126,14 @@ USE_I18N = True
 USE_TZ = True
 
 # Error logging to email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 DEFAULT_FROM_EMAIL = "Django Error <error.homepage.django@dylan-shah.com>"
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
-EMAIL_HOST = "mail.smtp2go.com"
+EMAIL_HOST = environ["EMAIL_HOST"]
 EMAIL_HOST_PASSWORD = environ["EMAIL_HOST_PASSWORD"]
 EMAIL_HOST_USER = environ["EMAIL_HOST_USER"]
-EMAIL_PORT = 25
-EMAIL_SUBJECT_PREFIX = "[Django Homepage Error] "
+EMAIL_PORT = 587
+EMAIL_SUBJECT_PREFIX = "[Django Homepage] "
 EMAIL_USE_LOCALTIME = True
 EMAIL_USE_TLS = True
 ADMINS = [
