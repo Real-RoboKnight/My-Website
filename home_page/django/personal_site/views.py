@@ -41,7 +41,7 @@ class ContactMe(View):
             return render(request, "Contact.html", {"form": form}, status=400)
 
         email = EmailMultiAlternatives(
-            subject=f"[WCR] {request.POST.get('subject')} [Website Contact Request]",
+            subject=f"[Website Contact Request] {request.POST.get('subject')}",
             to=["website.contact@dylan-shah.com"],
             from_email=f"{request.POST.get('name')} | Website Contact Request <contact-request.website@dylan-shah.com>",
             reply_to=[request.POST.get("response_email")],  # pyright: ignore[reportArgumentType]
@@ -73,19 +73,6 @@ class ContactMe(View):
 
 
 def test(request: HttpRequest) -> HttpResponse:
-
-    send_mail(
-        "Test Email from Django",  # Subject
-        # "Here is the message.",
-        "See HTML for the message.",
-        None,  # Use the default from email address
-        recipient_list=["meow@dylan-shah.com"],
-        fail_silently=False,
-        html_message=convert_quill_to_email_html(
-            convert_quill_to_email_html(
-                render_to_string("email_contact.html", {"name": "Dylan"})
-            )
-        ),
+    return HttpResponse(
+        "This is a test page. It is not meant to be used in production."
     )
-
-    return render(request, "email_contact.html", {"name": "Dylan"})

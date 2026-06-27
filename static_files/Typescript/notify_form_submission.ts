@@ -19,6 +19,11 @@ export function notify_form_submission(form: HTMLFormElement, modal: bootstrap.M
     form.addEventListener('submit', async function handler(event) {
         // Stop the page from immediately redirecting
         event.preventDefault();
+        form.querySelectorAll('button[type="submit"]').forEach((button) => {
+            button.innerHTML = '<div class="spinner-border" role="status"></div>';
+            button.disabled = true;
+        });
+
         const formData = new FormData(form);
         const response = await send_data(new URL(form.action), formData)
 
@@ -35,10 +40,7 @@ export function notify_form_submission(form: HTMLFormElement, modal: bootstrap.M
                 window.location.href = redirect
             });
             // Artificial wait to show 'progress'
-            form.querySelectorAll('button[type="submit"]').forEach((button) => {
-                button.innerHTML = '<div class="spinner-border" role="status"></div>'
-            });
-            setTimeout(() => { modal.show(); }, 750);
+            setTimeout(() => { modal.show(); }, 500);
         }
 
         return;
