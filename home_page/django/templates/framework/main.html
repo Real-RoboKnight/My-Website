@@ -30,9 +30,9 @@
     {% block head %}{% endblock %}
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     {% include "./navbar.html" %}
-    <main id="content" class="container">
+    <main id="content" class="container flex-grow-1">
         {% block body %}{% endblock %}
     </main>
     {% include "./footer.html" %}

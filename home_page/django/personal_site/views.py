@@ -10,17 +10,6 @@ from .forms import Contact_Me
 # Create your views here.
 
 
-def index(request: HttpRequest) -> HttpResponse:
-    return render(
-        request,
-        "framework/main.html",
-        {
-            "title": "Home",
-            "body": "This is the home page of my personal website. Welcome!",
-        },
-    )
-
-
 def static_page(template_path: str) -> Callable[[HttpRequest], HttpResponse]:
     def view(request: HttpRequest) -> HttpResponse:
         return render(request, template_path)

@@ -22,6 +22,9 @@ export function rich_text_form(id: HTMLDivElement, form: HTMLFormElement): Quill
         theme: "snow"
     });
 
+    const editorHeight = id.dataset.editorHeight ?? "16rem";
+    quill.root.style.minHeight = editorHeight;
+
     document.querySelectorAll(".ql-toolbar").forEach(function (toolbar) {
         toolbar.querySelectorAll("*").
             forEach(function (item) { item.setAttribute("tabindex", "-1"); });

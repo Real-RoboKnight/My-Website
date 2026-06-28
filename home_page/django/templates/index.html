@@ -1,0 +1,22 @@
+{# Copyright - All Rights Reserved #}
+
+{% extends "framework/main.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block description %}
+Dylan Shah's website's home page. It features different accomplishments by them. It serves as a digital résumé for them.
+{% endblock %}
+
+{% block body %}
+<div class="col-lg-8 order-1 vstack" id="resume">
+    <h2>R‌&eacutesum‌&eacute</h2>
+
+</div>
+<script>
+    window.addEventListener('load', function () {
+        load_post_stream(document.getElementById("resume"), "resume");
+    });
+</script>
+<div class="col-lg-4 order-1" id="highlights"></div>
+{% endblock %}

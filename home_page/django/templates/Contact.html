@@ -17,51 +17,18 @@ A web form to be able to contact Dylan Shah via email
 
 <h1>Contact Me</h1>
 <p>Feel free to contact me for any reason! For employment offers, for advice, to yap, etc.</p>
-<form method="post" action="{% url 'contact-me' %}" class="col-lg-8 col-12 mx-auto py-4">
+<form method="post" action="{% url 'contact-me' %}" class="col-lg-8 col-12 mx-auto py-4" autocomplete="on">
     {% csrf_token %}
 
     <div class="row row-cols-md-2 row-cols-1  ">
-        <!-- <div class="form-floating col mb-3">
-            <input type="text" id="name" placeholder="Name" name="name"
-                class="form-control {% if form.name.errors %}is-invalid{% endif %}"
-                value="{{ form.name.value|default:'' }}" required>
-            <label for="name">Name</label>
-            {% if form.name.errors %}
-            <div class="invalid-feedback d-block">
-                {{ form.name.errors.0 }}
-            </div>
-            {% endif %}
-        </div>-->
         <div class="col mb-3">{{ form.name.as_field_group }}</div>
-        <!-- <div class="form-floating col mb-3">
-            <input id="response_email" name="response_email" type="email" placeholder="Email"
-                class="form-control {% if form.response_email.errors %}is-invalid{% endif %}"
-                value="{{ form.response_email.value|default:'' }}" required>
-            <label for="response_email">Response Email</label>
-            {% if form.response_email.errors %}
-            <div class="invalid-feedback d-block">
-                {{ form.response_email.errors.0 }}
-            </div>
-            {% endif %}
-        </div> -->
         <div class="col mb-3">{{ form.response_email.as_field_group }}</div>
     </div>
     <div class="row ">
-        <!-- <div class="col-12 mb-3 form-floating">
-            <input type="text" id="subject" placeholder="Subject" name="subject"
-                class="form-control {% if form.subject.errors %}is-invalid{% endif %}"
-                value="{{ form.subject.value|default:'' }}" minlength="5" maxlength="50" required>
-            <label for="subject">Subject</label>
-            {% if form.subject.errors %}
-            <div class="invalid-feedback d-block">
-                {{ form.subject.errors.0 }}
-            </div>
-            {% endif %}
-        </div> -->
         <div class="col-12 mb-3">{{ form.subject.as_field_group }}</div>
     </div>
     <div class="form-group row mb-3">
-        <div class="col-12 d-flex flex-column rounded" style="height: 50vh;" tabindex="-1">
+        <div class="col-12 d-flex flex-column rounded" tabindex="-1">
             {{ form.content.as_field_group }}
         </div>
     </div>

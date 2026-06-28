@@ -48,11 +48,6 @@ $theme-colors: (
 
 @import 'bootstrap/scss/bootstrap';
 
-.form-floating label {
-  @extend .ps-4;
-}
-
-
 
 form input {
   @extend .form-control;
