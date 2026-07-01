@@ -1,0 +1,21 @@
+{# Copyright - All Rights Reserved #}
+
+{% extends "framework/main.html" %}
+
+{% block title %}Content Not Found{% endblock %}
+
+{% block description %}
+Content Not Found
+{% endblock %}
+
+{% block body %}
+<h1 class="display-1">404 Error :&lpar;</h1>
+<h2 class="display-2">We could not find the resource that you requested</h2>
+
+{% if message %}
+<h2>{{ message }}</h2>
+{% endif %}
+
+<p>Please check your link and make sure that this is the page that you requested.</p>
+<p>If there is some error on my end, please <a href="{% url 'contact-me' %}">contact me</a> and tell me to fix this!</p>
+{% endblock %}

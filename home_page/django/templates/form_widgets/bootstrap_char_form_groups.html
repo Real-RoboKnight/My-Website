@@ -1,5 +1,4 @@
-<fieldset {% if field.aria_describedby %} aria-describedby="{{ field.aria_describedby }}" {% endif %}
-    class="form-floating">
+<div class="form-floating">
     {{ field }}
     {% if field.label %}{{ field.label_tag }}{% endif %}
     {% if field.help_text %}<div class="helptext" {% if field.auto_id %} id="{{ field.auto_id }}_helptext" {% endif %}>
@@ -24,4 +23,4 @@
         {% endif %}
 
     </div>
-</fieldset>
+</div>

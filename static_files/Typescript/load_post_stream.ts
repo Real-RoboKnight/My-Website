@@ -1,3 +1,5 @@
+// Depreciated. Render things in Django
+
 interface Post {
     slug: string;
     title: string;
@@ -15,10 +17,15 @@ export function load_post_stream(div: HTMLDivElement, stream: string, start?: nu
         params.append("count", count.toString());
 
     fetch(`/blog/stream/${stream}?${params}`)
-        .then(result => result.json())
-        .then((stream: Stream) => {
+        .then(result => {
+            if (!result.ok)
+                return null;
+            return result.json() as Promise<Stream>;
+        })
+        .then((stream: Stream | null) => {
+            if (!stream)
+                return;
             stream.forEach(post => {
-
                 const elem = document.createElement("a");
                 elem.href = `/blog/post/${post.slug}`;
                 elem.className = "text-decoration-none text-reset d-block";

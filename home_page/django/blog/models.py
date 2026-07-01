@@ -10,6 +10,9 @@ class BlogPost(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     slug = models.SlugField(unique=True)
+    related_posts = models.ForeignKey(
+        "PostStream", on_delete=models.SET_NULL, null=True, blank=True
+    )
 
     def __str__(self):
         return self.title

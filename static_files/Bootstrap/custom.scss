@@ -24,7 +24,7 @@ $body-bg-dark: #03001F;
 
 // Alerts in Bootstrap 5.3 use *-bg-subtle variables for background color.
 // Increase tint so contextual alerts look lighter.
-$link-color-dark: mix(#0000ff, $body-color-dark, 50%);
+$link-color-dark: mix(#0000ff, $body-color-dark, 30%);
 $primary-bg-subtle-dark: shade-color($primary, 70%);
 $secondary-bg-subtle-dark: shade-color($secondary, 75%);
 $success-bg-subtle-dark: shade-color($success, 75%);

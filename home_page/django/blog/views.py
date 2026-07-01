@@ -22,6 +22,7 @@ def all_stream(
 
 
 def stream(request: HttpRequest, slug: str) -> HttpResponse:
+    """Deprecated: render thing in Django instead."""
     try:
         post_stream = PostStream.objects.get(slug=slug)
     except PostStream.DoesNotExist:
@@ -43,14 +44,25 @@ def post(request: HttpRequest, slug: str) -> HttpResponse:
     try:
         post = BlogPost.objects.get(slug=slug)
     except BlogPost.DoesNotExist:
-        return HttpResponseNotFound("Post not found.")
+        return HttpResponseNotFound(
+            render(request, "404.html", {"message": "Post does not exist."})
+        )
+
+    related_posts = []
+    if post.related_posts:
+        related_posts = list(
+            post.related_posts.posts.values(
+                "slug", "title", "description", "updated_at"
+            )
+        )
 
     context = {
         "title": post.title,
         "description": post.description,
         "content": post.content,
         "created_at": post.created_at.date(),
-        "tags": post.poststream_set.values_list("title", flat=True),  # pyright: ignore[reportAttributeAccessIssue]
+        "tags": list(post.poststream_set.values_list("title", flat=True)),  # pyright: ignore[reportAttributeAccessIssue]
+        "related_posts": related_posts,
     }
 
     if post.created_at.date() != post.updated_at.date():

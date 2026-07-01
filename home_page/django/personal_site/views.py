@@ -6,7 +6,9 @@ from django.template.loader import render_to_string
 from django.views.generic import View
 from django.core.mail import send_mail, EmailMultiAlternatives
 
+from blog.models import PostStream, BlogPost
 from .forms import Contact_Me
+from .models import HomepageStream
 # Create your views here.
 
 
@@ -65,3 +67,28 @@ def test(request: HttpRequest) -> HttpResponse:
     return HttpResponse(
         "This is a test page. It is not meant to be used in production."
     )
+
+
+def index(request: HttpRequest) -> HttpResponse:
+    homepage_streams = (
+        HomepageStream.objects.select_related("stream").prefetch_related("stream__posts")
+    )
+
+    def build_streams(column: str) -> list[dict[str, object]]:
+        return [
+            {
+                "title": hs.stream.title,
+                "posts": hs.stream.posts.values(
+                    "slug", "title", "description", "updated_at"
+                ),
+            }
+            for hs in homepage_streams
+            if hs.column == column
+        ]
+
+    context = {
+        "wide_post_streams": build_streams(HomepageStream.Column.WIDE),
+        "narrow_post_streams": build_streams(HomepageStream.Column.NARROW),
+    }
+
+    return render(request, "index.html", context)
