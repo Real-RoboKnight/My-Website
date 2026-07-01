@@ -9,7 +9,7 @@ to allow you to easily add them.
 .env files:
 
 - ./.env
-  - `PORT:3000` This is the port on the host computer that my website will be on.
+  - `PORT` This is the port on the host computer that my website will be on.
   - `SECRET_KEY` This should be a long and secure key that the server will use. When rotated, will sign out of all sessions, etc.
   - `EMAIL_HOST` URL of the SMTP email server
   - `EMAIL_HOST_USER` Username for email server
