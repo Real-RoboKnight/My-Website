@@ -1,0 +1,48 @@
+{# Copyright - All Rights Reserved #}
+
+{% extends "framework/main.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block description %}
+Dylan Shah's website's home page. It features different accomplishments by them. It serves as a digital résumé for them.
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-lg-8">
+        {% for post_stream in wide_post_streams %}
+        <div class="vstack">
+            <h2 class="mb-3 ">{{ post_stream.title }}</h2>
+            {% for post in post_stream.posts %}
+            <a class="text-decoration-none text-reset d-block" href="{% url 'post' slug=post.slug %}">
+                <div class="card mb-3 border-primary">
+                    <div class="card-body py-2">
+                        <h3 class="card-title mb-1">{{ post.title }}</h3>
+                        <p class="card-text mb-0">{{ post.description }}</p>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="col-lg-4">
+        {% for post_stream in narrow_post_streams %}
+        <div class="vstack">
+            <h2 class="mb-3 ">{{ post_stream.title }}</h2>
+            {% for post in post_stream.posts %}
+            <a class="text-decoration-none text-reset d-block" href="{% url 'post' slug=post.slug %}">
+                <div class="card mb-3 border-secondary">
+                    <div class="card-body py-2">
+                        <h3 class="card-title mb-1">{{ post.title }}</h3>
+                        <p class="card-text mb-0">{{ post.description }}</p>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

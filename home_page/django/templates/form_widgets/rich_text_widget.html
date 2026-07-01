@@ -1,0 +1,36 @@
+<div class="form-rich-text-wrapper" style="display:flex;flex-direction:column;width:100%;">
+    <div id="{{ widget.attrs.id }}" data-field-name="{{ widget.name }}"
+        data-editor-height="{{ widget.attrs.editor_height|default:'16rem' }}" class="form-rich-text"
+        name="{{ widget.name }}">{{ widget.value|safe }}</div>
+</div>
+
+<script>
+    window.addEventListener('load', function () {
+        console.log("Initializing Quill Rich Text Editor")
+        const container = document.getElementById("{{ widget.attrs.id }}");
+        if (!container) {
+            return;
+        }
+
+        const html_form = container.closest("form");
+        if (!html_form) {
+            return;
+        }
+
+        const quill = window.rich_text_form(
+            container,
+            html_form
+        );
+
+        const toolbar = quill.getModule("toolbar")?.container;
+        if (toolbar instanceof HTMLElement) {
+            toolbar.style.width = "100%";
+            toolbar.style.order = "1";
+        }
+
+        if (quill.container instanceof HTMLElement) {
+            quill.container.style.width = "100%";
+            quill.container.style.order = "2";
+        }
+    });
+</script>

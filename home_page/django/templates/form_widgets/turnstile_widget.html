@@ -1,0 +1,21 @@
+<div id="{{ widget.attrs.id }}" data-site-key="{{ turnstile_public_key }}" data-field-name="{{ widget.name }}"
+    name="{{ widget.name }}" class="turnstile-container"></div>
+
+<script>
+    window.addEventListener('load', function () {
+        console.log("Initializing CF Turnstile")
+        const container = document.getElementById("{{ widget.attrs.id }}");
+        if (!container) {
+            return;
+        }
+
+        const site_key = container.dataset.siteKey;
+        const html_form = container.closest("form");
+        const error_div = document.getElementById("{{ widget.attrs.id }}_errors");
+        if (!site_key || !html_form || !error_div || typeof window.turnstile_form !== "function") {
+            return;
+        }
+
+        window.turnstile_form(container, html_form, error_div, site_key);
+    });
+</script>

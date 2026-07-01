@@ -1,6 +1,7 @@
 FROM nginx:alpine
 
 COPY ["[0-9]*.sh", "docker-entrypoint.d/"]
+COPY favicon.ico /favicon.ico
 
 RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/nginx.conf

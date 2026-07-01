@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "lib": [
+            "DOM",
+            "ES2022"
+        ],
+        "target": "ES2022",
+        "strict": true,
+        "moduleResolution": "Bundler",
+        "paths": {
+            "*": [
+                "*",
+                "static_files/Typescript/*"
+            ]
+        },
+        "checkJs": true
+    },
+    "include": [
+        "static_files/Typescript/**/*",
+        "home_page/**/*"
+    ]
+}

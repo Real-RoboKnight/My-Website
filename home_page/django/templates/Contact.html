@@ -1,0 +1,91 @@
+{# Copyright - All Rights Reserved #}
+
+{% extends "framework/main.html" %}
+
+{% block title %}Contact Me{% endblock %}
+
+{% block description %}
+A web form to be able to contact Dylan Shah via email
+{% endblock %}
+
+{% block head %}
+{{ block.super }}
+{% endblock %}
+
+
+{% block body %}
+
+<h1>Contact Me</h1>
+<p>Feel free to contact me for any reason! For employment offers, for advice, to yap, etc.</p>
+<form method="post" action="{% url 'contact-me' %}" class="col-lg-8 col-12 mx-auto py-4" autocomplete="on">
+    {% csrf_token %}
+
+    <div class="row row-cols-md-2 row-cols-1  ">
+        <div class="col mb-3">{{ form.name.as_field_group }}</div>
+        <div class="col mb-3">{{ form.response_email.as_field_group }}</div>
+    </div>
+    <div class="row ">
+        <div class="col-12 mb-3">{{ form.subject.as_field_group }}</div>
+    </div>
+    <div class="form-group row mb-3">
+        <div class="col-12 d-flex flex-column rounded" tabindex="-1">
+            {{ form.content.as_field_group }}
+        </div>
+    </div>
+    <div class="row row-cols-md-2 row-cols-1">
+        <div class="col mb-3">
+            {{ form.turnstile_token.as_field_group }}
+        </div>
+        <div class="col mb-3">
+            <button type="submit" class="btn btn-primary w-100 h-100 mb-3" disabled>Send</button>
+        </div>
+    </div>
+    <div id="result" class="collapse {% if form.hidden_fields or form.non_field_errors %}show{% endif %}">
+        {% if form.hidden_fields %}
+        {% for hidden_field in form.hidden_fields %}
+
+        {% for error in hidden_field.errors %}
+        <div class="alert alert-danger" role="alert">
+            {{ hidden_field.label }} - {{ error }}
+        </div>
+        {% endfor %}
+
+        {% endfor %}
+        {% endif %}
+        {% if form.non_field_errors %}
+        <div class="alert alert-danger" role="alert">
+            {% for error in form.non_field_errors %}
+            <div>{{ error }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</form>
+<p>I only speak US-English fluently, so I would appreciate it if you kept to English. Thanks :)</p>
+
+
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Submission Successful!</h5>
+                <button type="submit" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Your message has been sent. Afterwords, hopefully, I will respond soon!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Got it!</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.addEventListener('load', function () {
+        window.notify_form_submission(
+            document.getElementsByTagName("form").item(0),
+            new bootstrap.Modal(document.getElementById('successModal')));
+    });
+</script>
+{% endblock %}
