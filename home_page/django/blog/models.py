@@ -18,7 +18,7 @@ class BlogPost(models.Model):
         return self.title
 
     class Meta:
-        ordering = ["sort_order", "-updated_at"]
+        ordering = ["-sort_order", "-updated_at"]
 
 
 class PostStream(models.Model):
