@@ -8,7 +8,7 @@ import Quill from "quill";
 export function rich_text_form(id: HTMLDivElement, form: HTMLFormElement): Quill {
     const toolbarOptions = [
         ['clean', 'bold', 'italic', 'underline', 'blockquote', 'code-block', { 'color': [] }, { 'background': [] }, { 'align': [] },],
-        ['link', 'formula', { 'script': 'sub' }, { 'script': 'super' }],
+        ['link', 'formula', 'image', { 'script': 'sub' }, { 'script': 'super' }],
         [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
 
         [{ 'header': [1, 2, 3, false] }, { 'size': ['small', false, 'large', 'huge'] }],
